@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryence Cortez Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfolio of Ryence Cortez, fourth-year BS Computer Science student at Holy Angel University, looking for an OJT in software development and IT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Single dark-blue look on every device. Layout: top bar, a hero with a snapshot panel, then full-width sections. Project entries sit in bordered cards; everything else stays flat. */
+  :root {
+    --bg: #0e131b;
+    --surface: #151c27;
+    --fg: #e7ecf3;
+    --muted: #9ba7b9;
+    --line: #263042;
+    --accent: #7db0f0;
+    --accent-ink: #0b1420;
+    --chip: #1a2740;
+    --chip-ink: #9cc4f5;
+    --hero: #131b29;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0 64px;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+  .page { max-width: 960px; margin: 0 auto; }
+
+  /* top bar */
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .bar .name { font-weight: 600; color: var(--fg); }
+  .bar .name:hover { text-decoration: none; }
+  .bar nav { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 14.5px; }
+  .bar nav a { color: var(--muted); }
+  .bar nav a:hover { color: var(--fg); text-decoration: none; }
+
+  /* hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 32px; align-items: center; padding: 56px 0 52px; }
+  @media (max-width: 760px) { .hero { grid-template-columns: minmax(0, 1fr); padding: 40px 0; } }
+  .eyebrow { font-family: var(--mono); font-size: 12.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+  h1 { font-size: clamp(34px, 6vw, 52px); line-height: 1.08; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px; text-wrap: balance; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 52ch; margin: 0 0 24px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 6px; font-weight: 500; font-size: 15px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+  .btn:hover { text-decoration: none; border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.primary:hover { filter: brightness(1.08); }
+
+  .snapshot { background: var(--hero); border: 1px solid var(--line); border-radius: 10px; padding: 8px 20px; margin: 0; }
+  .snapshot div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .snapshot div:last-child { border-bottom: 0; }
+  .snapshot dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .snapshot dd { margin: 2px 0 0; font-weight: 600; font-size: 17px; }
+
+  /* sections */
+  section { padding: 44px 0 8px; scroll-margin-top: 8px; }
+  .head { display: flex; align-items: baseline; gap: 14px; margin: 0 0 22px; }
+  h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0; line-height: 1.2; }
+  .head .rule { flex: 1; height: 1px; background: var(--line); }
+
+  p { margin: 0 0 12px; max-width: 68ch; }
+  .meta { font-size: 14px; color: var(--muted); margin: 0 0 12px; }
+  h3 { font-size: 20px; font-weight: 600; margin: 0 0 2px; line-height: 1.3; }
+  ul.points { margin: 0 0 14px; padding-left: 20px; max-width: 68ch; }
+  ul.points li { margin: 5px 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0 0 14px; }
+  .chips li { font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 999px; background: var(--chip); color: var(--chip-ink); }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 22px; font-weight: 500; font-size: 15px; }
+
+  /* project cards */
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 26px; }
+  .card + .card { margin-top: 20px; }
+  @media (max-width: 520px) { .card { padding: 20px; } }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0 10px; }
+  .shots figure { margin: 0; min-width: 0; }
+  .shots img { display: block; width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 6px; }
+  .shots figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  @media (max-width: 640px) { .shots { grid-template-columns: minmax(0, 1fr); } }
+  .note { font-size: 14px; color: var(--muted); }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  @media (max-width: 640px) { .skills { grid-template-columns: minmax(0, 1fr); } }
+  .skills h3 { font-size: 13px; font-family: var(--mono); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  .skills .group { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .skills .chips { margin: 0; }
+
+  /* education and certifications */
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: start; }
+  .two .card + .card { margin-top: 0; }
+  @media (max-width: 820px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  ul.rows { list-style: none; margin: 0; padding: 0; }
+  ul.rows li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  ul.rows li:first-child { padding-top: 0; }
+  ul.rows li:last-child { border-bottom: 0; padding-bottom: 0; }
+  ul.rows .when { font-family: var(--mono); font-size: 12.5px; color: var(--muted); white-space: nowrap; padding-top: 3px; }
+  ul.rows .what { min-width: 0; }
+
+  /* contact */
+  .contact { background: var(--hero); border: 1px solid var(--line); border-radius: 10px; padding: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; }
+  .contact h2 { font-size: 22px; margin: 0 0 4px; }
+  .contact p { margin: 0; color: var(--muted); }
+
+  footer { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer p { margin: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="bar">
+    <a class="name" href="#top">Ryence Cortez</a>
+    <nav aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <div class="hero">
+      <div>
+        <p class="eyebrow">BS Computer Science · Holy Angel University</p>
+        <h1>Ryence Cortez</h1>
+        <p class="lead">I build web applications and I'm learning how real systems run in the cloud. I'm looking for an OJT where I can learn from an engineering team and contribute to real work.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" href="https://github.com/Ryence07" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/ryence-cortez-8ab886334" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <dl class="snapshot">
+        <div><dt>Graduating</dt><dd>April 2027</dd></div>
+        <div><dt>Honors</dt><dd>President's Lister, 3 academic years</dd></div>
+        <div><dt>Certifications</dt><dd>8, in web, security, data and AI</dd></div>
+        <div><dt>OJT availability</dt><dd>December 2026, 486 hours</dd></div>
+      </dl>
+    </div>
+
+    <section id="projects">
+      <div class="head"><h2>Projects</h2><span class="rule"></span></div>
+
+      <article class="card">
+        <h3>PaddleMatch</h3>
+        <p class="meta">Final project, web application</p>
+        <p>A web app that helps beginner and recreational pickleball players choose a paddle and find people to play with.</p>
+        <ul class="points">
+          <li>Recommends paddles from skill level, playing style and budget, using a scoring rule (40 points for skill fit, 35 for style, 25 for budget).</li>
+          <li>Players register, send match requests, and opponents accept or decline. Recorded results update wins, losses and points on a leaderboard.</li>
+          <li>Express API on PostgreSQL with scrypt-hashed passwords, hashed session tokens, parameterized queries, and a database transaction when a result is recorded.</li>
+          <li>Front end deployed on GitHub Pages with GitHub Actions, API on Render, database on Neon.</li>
+          <li>Documented my AI-assistant use in the repository, including what I changed and where it was wrong.</li>
+        </ul>
+        <ul class="chips"><li>React</li><li>Vite</li><li>Node.js</li><li>Express</li><li>PostgreSQL</li><li>GitHub Actions</li></ul>
+        <div class="shots">
+          <figure><img src="assets/paddlematch-recommendations.png" alt="PaddleMatch recommendation page with skill level, playing style and budget filters" loading="lazy"><figcaption>Paddle recommendations</figcaption></figure>
+          <figure><img src="assets/paddlematch-player-match.png" alt="PaddleMatch player list with Match Up buttons" loading="lazy"><figcaption>Player Match</figcaption></figure>
+          <figure><img src="assets/paddlematch-leaderboard.png" alt="PaddleMatch leaderboard ranking players by points" loading="lazy"><figcaption>Leaderboard</figcaption></figure>
+        </div>
+        <p class="note">The live app is behind an access password, so screenshots are shown. Demo access is available on request.</p>
+        <div class="links">
+          <a href="https://github.com/Ryence07/PaddleMatch" target="_blank" rel="noopener">Source code</a>
+          <a href="https://ryence07.github.io/PaddleMatch/" target="_blank" rel="noopener">Live app (password protected)</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Price Watch PH, e-commerce price monitoring extension</h3>
+        <p class="meta">Undergraduate thesis, group of four</p>
+        <p>A Chrome and Edge extension (Manifest V3) that tracks product prices on Shopee and Lazada Philippines and alerts the user when a price reaches their target. It runs in the browser and keeps data on the user's device, so it needs no external server.</p>
+        <ul class="points">
+          <li>Four rule-based steps: URL pattern matching, CSS-selector DOM parsing, price normalization and threshold comparison. Background checks use the Chrome Alarms API.</li>
+          <li>Correct price on 20 of 20 benchmark pages, 8 of 8 normalization cases and 25 of 25 target-price events.</li>
+          <li>Rated 3.97 out of 5 by three IT experts (ISO/IEC 25010) and 72.5 on the System Usability Scale by 17 users, above the common average of 68.</li>
+          <li>My part: the research paper, including its figures and models, and organizing the questionnaire data. I took part in the ten Agile sprints and defended the thesis before a panel.</li>
+        </ul>
+        <ul class="chips" style="margin:0"><li>JavaScript</li><li>Chrome Extension API</li><li>IndexedDB</li><li>DOM parsing</li><li>Agile</li></ul>
+      </article>
+
+      <article class="card">
+        <h3>HAUPokemon Monster's App, backend API</h3>
+        <p class="meta">Group project</p>
+        <p>A REST API with 17 endpoints for a group-built app, deployed on an AWS EC2 server with an RDS MySQL database. My first hands-on experience deploying to the cloud.</p>
+        <ul class="chips" style="margin:0"><li>REST API</li><li>AWS EC2</li><li>AWS RDS</li><li>MySQL</li></ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <div class="head"><h2>Skills</h2><span class="rule"></span></div>
+      <div class="skills">
+        <div class="group"><h3>Languages</h3><ul class="chips"><li>JavaScript</li><li>Python</li><li>SQL</li><li>HTML</li><li>CSS</li></ul></div>
+        <div class="group"><h3>Web development</h3><ul class="chips"><li>React</li><li>Vite</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Responsive design</li></ul></div>
+        <div class="group"><h3>Databases and cloud</h3><ul class="chips"><li>PostgreSQL</li><li>MySQL</li><li>IndexedDB</li><li>AWS EC2 and RDS</li><li>Render</li><li>Git and GitHub</li></ul></div>
+        <div class="group"><h3>Security, data and AI</h3><ul class="chips"><li>Endpoint security</li><li>Cyber threat management</li><li>Data analytics</li><li>Excel</li><li>AI fundamentals</li></ul></div>
+      </div>
+    </section>
+
+    <section id="background">
+      <div class="head"><h2>Background</h2><span class="rule"></span></div>
+      <div class="two">
+        <div class="card">
+          <h3>Education</h3>
+          <p class="meta" style="margin-bottom:8px">Bachelor of Science in Computer Science</p>
+          <p style="margin-bottom:8px">Holy Angel University, School of Arts and Sciences, Angeles City. Expected April 2027.</p>
+          <ul class="points" style="margin-bottom:0">
+            <li>President's Lister: 1st semester AY 2023–2024, AY 2024–2025, AY 2025–2026. Dean's Lister: 2nd semester AY 2023–2024.</li>
+            <li>Coursework: Application Systems and Integration, Cloud Computing, Operating Systems, Information Assurance and Security, Statistics, IT Project Management.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:14px">Certifications</h3>
+          <ul class="rows">
+            <li><span class="what">Data Analytics Essentials, Cisco</span><span class="when">Apr 2026</span></li>
+            <li><span class="what">AI Fundamentals with IBM SkillsBuild, Cisco</span><span class="when">Feb 2026</span></li>
+            <li><span class="what">Cyber Threat Management, Cisco</span><span class="when">Oct 2025</span></li>
+            <li><span class="what">Endpoint Security, Cisco</span><span class="when">Sep 2025</span></li>
+            <li><span class="what">Relational Database V8, freeCodeCamp</span><span class="when">Jan 2025</span></li>
+            <li><span class="what">JavaScript Essentials 1, Cisco</span><span class="when">Oct 2024</span></li>
+            <li><span class="what">Legacy Responsive Web Design V8, freeCodeCamp</span><span class="when">Aug 2024</span></li>
+            <li><span class="what">CompTIA IT Fundamentals (ITF+)</span><span class="when">Nov 2023</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <h2>Let's talk about OJT</h2>
+          <p>ryences.cortez@gmail.com · Angeles City, Pampanga</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:ryences.cortez@gmail.com">Email me</a>
+          <a class="btn" href="https://www.linkedin.com/in/ryence-cortez-8ab886334" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/Ryence07" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Ryence Cortez</p>
+  </footer>
+
+</div>
+</body>
+</html>
